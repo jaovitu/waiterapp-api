@@ -7,9 +7,14 @@ import mongoose from 'mongoose';
 const mongoURL = process.env.MONGO_URL;
 const port = process.env.PORT;
 
+import { router } from './router';
+
 mongoose.connect(mongoURL as string)
   .then(() => {
     const app = express();
+
+    app.use(router);
+
     console.clear();
 
     console.log('Conectado ao mongodb');

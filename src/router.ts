@@ -1,11 +1,10 @@
 import { Request, Response, Router } from 'express';
+import { listCategories } from './app/useCases/categories/listCategories';
 
 const router = Router();
 
 // List categories
-router.get('/categories', (request: Request, response: Response) => {
-  response.send('OK');
-});
+router.get('/categories', listCategories);
 
 // Create category
 router.post('/categories', (request: Request, response: Response) => {
