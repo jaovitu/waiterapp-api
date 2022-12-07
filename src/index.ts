@@ -13,6 +13,7 @@ mongoose.connect(mongoURL as string)
   .then(() => {
     const app = express();
 
+    app.use(express.json());
     app.use(router);
 
     console.clear();
