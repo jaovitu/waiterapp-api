@@ -6,6 +6,7 @@ import { listCategories } from './app/useCases/categories/listCategories';
 import { createCategory } from './app/useCases/categories/createCategory';
 import { listProducts } from './app/useCases/products/listProducts';
 import { createProduct } from './app/useCases/products/createProduct';
+import { listProductsByCategory } from './app/useCases/categories/listProductsByCategory';
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -34,9 +35,7 @@ router.get('/products', listProducts);
 router.post('/products', upload.single('image'), createProduct);
 
 // Get products by category
-router.get('/categories/:categoryID/products', (request: Request, response: Response) => {
-  response.send('OK');
-});
+router.get('/categories/:categoryID/products', listProductsByCategory);
 
 // List orders
 router.get('/orders', (request: Request, response: Response) => {
